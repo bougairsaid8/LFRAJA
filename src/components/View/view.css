@@ -1,0 +1,30 @@
+.ViewContainer {
+  flex-grow: 1; /* لجعل الحاوية تملأ المساحة المتبقية */
+  margin: 0px;
+  height: 100%;
+  position: relative;
+  overflow-y: auto; /* إضافة شريط تمرير عمودي عند الحاجة */
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #a8a8a8 #f0f0f0;
+}
+
+
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+.ViewContainer::-webkit-scrollbar {
+  width: 8px; /* عرض شريط التمرير */
+}
+
+.ViewContainer::-webkit-scrollbar-track {
+  background: #f0f0f0; /* لون مسار الشريط */
+}
+
+.ViewContainer::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; /* لون المقبض */
+  border-radius: 10px; /* جعل المقبض دائري الحواف */
+}
+
+.ViewContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8; /* تغيير اللون عند تمرير الماوس */
+}

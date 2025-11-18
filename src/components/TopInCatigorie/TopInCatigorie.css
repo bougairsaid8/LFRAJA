@@ -1,0 +1,92 @@
+.containerCatigorit {
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+    max-width: 1200px;
+    margin: 20px auto; 
+}
+
+.carouselHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.sectionTitle {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 1.3em;
+    line-height: 25px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: #333;
+    font-style: italic;
+}
+.sectionTitle svg{
+    height: 23px;
+    width: 23px;
+    margin-left: 5px;
+}
+
+.carouselNav {
+    display: flex;
+}
+
+.navButton {
+    background: #7ed957; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background 0.2s;
+    height: 30px;
+    width: 30px;
+    border: none;
+}
+
+.navButton+.navButton svg{
+    transform: rotate(180deg);
+}
+
+.navButton:hover {
+    background: #c0dedd;
+}
+
+/* The Carousel/Slider Container */
+.movieCarousel {
+    display: flex; 
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory; 
+    padding: 15px 0;
+    gap: 15px; 
+}
+
+/* Hide scrollbar for cleaner look (optional) */
+.movieCarousel::-webkit-scrollbar {
+    display: none;
+}
+.movieCarousel {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* View All Link positioning */
+.viewAll {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%; 
+    margin-right: 10px;
+}
+
+.viewAll a {
+    color: #4CAF50; 
+    text-decoration:none;
+    font-weight: 500;
+
+}

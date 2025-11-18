@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  overflow: hidden; /* لمنع أي تمرير على مستوى الصفحة كلها */
+}
