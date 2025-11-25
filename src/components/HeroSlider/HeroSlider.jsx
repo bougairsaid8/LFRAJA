@@ -5,11 +5,10 @@ import tmdb from "../../api/tmdb";
 function HeroSlider({ genres }) {
   const [heroSliderData, setHeroSliderData] = useState([]);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const totalSlides = heroSliderData.length;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await tmdb.get("/movie/popular", { params: { page: 1 } });
+        const res = await tmdb.get("/trending/all/day", { params: { page: 1 } });
         setHeroSliderData(res.data.results.slice(0, 5));
       } catch (err) {
         console.error(err);
@@ -21,20 +20,16 @@ function HeroSlider({ genres }) {
 
   const Data = heroSliderData[currentSlideIndex];
 
-  // دالة الانتقال للشريحة التالية
   const goToNextSlide = () => {
-    setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+    setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % 5);
   };
 
-  // 👈 إصلاح setInterval باستخدام useEffect
   useEffect(() => {
     const sliderInterval = setInterval(goToNextSlide, 5000);
 
-    // وظيفة التنظيف (Cleanup) عند إزالة أو تحديث المكون
     return () => clearInterval(sliderInterval);
-  }, [totalSlides]); // تعتمد على totalSlides فقط
+  }, []); 
 
-  // دالة تغيير الشريحة يدوياً عبر النقاط
   const manualChange = (index) => {
     setCurrentSlideIndex(index);
   };
@@ -46,7 +41,7 @@ function HeroSlider({ genres }) {
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${Data?.backdrop_path || ""})` }}
       >
         <div className="infoSlider">
-          <h2>{Data?.title}</h2>
+          <h2>{Data?.name || Data?.title}</h2>
           <div className="type">
             {Data?.genre_ids.map((id, index) => (
               <p key={index}>{genres.find((g) => g.id === id)?.name}</p>

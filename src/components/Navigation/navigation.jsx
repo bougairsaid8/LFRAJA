@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './navigation.css'
+import { AppContext } from '../../contextglobal'
 export default function Navigation(){
+    const mode=useContext(AppContext).Mode;
+    const setMode=useContext(AppContext).setMode
+    
     return(
         <>
-            <div className='containerNav'>
+            <div className={`containerNav ${mode=='light'?'light':'dark'}`}>
                 <h1 className='logo'>LFRAJA</h1>
                 <div className='darkMode'>
-                    <div className='Light active'>
+                    <div className={`Light ${mode=='light'&& 'active'}`} onClick={()=>setMode('light')}>
                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Light-Dark-Mode--Streamline-Sharp-Remix" height="24" width="24">
                             <desc>
                                 Light Dark Mode Streamline Icon: https://streamlinehq.com
@@ -17,7 +21,7 @@ export default function Navigation(){
                         </svg>
                         <p>Light</p>
                     </div>
-                    <div className="Dark">
+                    <div className={`Dark ${mode=='dark'&& 'active'}`} onClick={()=>setMode('dark')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
                             <g id="Dark-Mode-Fill">
                                 <path id="Union" fill="currentColor" d="M8.79785 3.03129c0.27994 -0.06104 0.57524 0.00085 0.8086 0.17383 0.26656 0.1978 0.41775 0.51507 0.40335 0.84668 -0.0065 0.14806 -0.0098 0.29747 -0.0098 0.44727 0 5.52283 4.4772 10.00003 10 10.00003 0.15 0 0.299 -0.0033 0.4473 -0.0098 0.3316 -0.0146 0.6497 0.1369 0.8476 0.4033 0.1978 0.2666 0.2497 0.6146 0.1397 0.9278 -1.369 3.8889 -5.0745 6.6787 -9.4346 6.6787 -5.52285 0 -10 -4.4772 -10 -10 0.00039 -4.35974 2.79008 -8.06577 6.67871 -9.4346z" strokeWidth="1"></path>
@@ -67,7 +71,7 @@ export default function Navigation(){
                                     <path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M5.495 0.126A0.889 0.889 0 0 1 6.379 0.11c3.987 1.852 6.244 5.698 6.105 8.914 -0.06 1.351 -0.543 2.602 -1.48 3.515 -0.938 0.914 -2.285 1.448 -3.99 1.451a5.186 5.186 0 0 1 -5.502 -4.967l0 -0.008a4.38 4.38 0 0 1 2.251 -3.94 0.5 0.5 0 0 1 0.7 0.235A5.005 5.005 0 0 0 5.47 6.796c0.494 -0.645 0.722 -1.478 0.715 -2.394 -0.008 -1.09 -0.35 -2.259 -0.924 -3.254A0.76 0.76 0 0 1 5.495 0.126Z" clipRule="evenodd" strokeWidth="1"></path>
                                 </g>
                             </svg>
-                            <p>Popular</p>
+                            <p>Trending</p>
                         </li>
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">

@@ -9,6 +9,9 @@
   scrollbar-width: thin;
   scrollbar-color: #a8a8a8 #f0f0f0;
 }
+.ViewContainer.dark{
+  background: #121212;
+}
 
 
 /* For WebKit-based browsers (Chrome, Safari, Edge) */

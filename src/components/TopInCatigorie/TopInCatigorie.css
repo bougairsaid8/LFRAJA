@@ -21,8 +21,14 @@
     line-height: 25px;
     text-align: center;
     font-family: "Montserrat", sans-serif;
-    color: #333;
+    
     font-style: italic;
+}
+.containerCatigorit.light .sectionTitle{
+    color: #333;
+}
+.containerCatigorit.dark .sectionTitle{
+    color:#fff
 }
 .sectionTitle svg{
     height: 23px;

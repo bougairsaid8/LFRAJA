@@ -8,13 +8,21 @@
     width: 250px;
     height: 100%;
     padding: 20px;
-    background-color: #f8f8f8;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-    border-right: 1px solid #707070;
+    
     display: flex;
     flex-direction: column;
     z-index: 10;
     transition: background-color 0.3s, color 0.3s;
+}
+.containerNav.light{
+    background-color: #f8f8f8;
+    border-right: 1px solid #707070;
+}
+.containerNav.dark{
+    background-color: #121212; /* لون أسود مريح للعين (ليس أسود 100%) */
+    color: #e0e0e0; /* لون النص أبيض مائل للرمادي قليلاً */
+    border-right: 1px solid #d3d3d3; 
 }
 
 /* -------------------------------------- */
@@ -24,11 +32,16 @@
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #333;
     text-align: center;
     margin-bottom: 30px;
     user-select: none;
     font-family: "Montserrat", sans-serif;
+}
+.containerNav.light .logo{
+    color: #333;
+}
+.containerNav.dark .logo{
+    color: #fff;
 }
 
 /* -------------------------------------- */
@@ -108,12 +121,31 @@
     padding: 10px 0;
     cursor: pointer;
     border-radius: 6px;
-    color: #555;
+    
     transition: background-color 0.2s, color 0.2s;
 }
-
-.links li:hover, .links li.active {
+.containerNav.light .links li{
+    color: #555;
+}
+.containerNav.light .links li:hover{
+    color: #7ed957;
     background-color: #eee;
+}
+
+.containerNav.dark .links li{
+    color:#9b9b9b
+}
+
+.containerNav.dark .links li:hover{
+    color: #fff;
+    background-color: #1f1f1f;
+}
+.containerNav.light .links li.active {
+    background-color: #eee;
+    color: #7ed957;
+}
+.containerNav.dark .links .active {
+    background-color: #1f1f1f;
     color: #7ed957;
 }
 
@@ -136,14 +168,17 @@
 /* -------------------------------------- */
 
 .loginOut {
-    color: #dc3545;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
+    color: #d14d5a;
     margin-top: 20px;
 }
 
-.loginOut:hover {
-    background-color: #fde6e8;
+.containerNav.light .loginOut:hover {
+    background-color: #eee;
+    color:#d11b2d;
+}
+.containerNav.dark .loginOut:hover {
+    background-color: #1f1f1f;
+    color:#d11b2d;
 }
 
 

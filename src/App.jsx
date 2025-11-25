@@ -1,40 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import "./App.css";
 import Navigation from "./components/Navigation/navigation";
 import ViewContent from "./components/View/view";
+import {AppContext} from "./contextglobal.jsx"
 import tmdb from "./api/tmdb";
 
 function App() {
-  const [allGenres, setAllGenres] = useState([]);
+  const [GMovie, setGMovie] = useState([]);
+  const [GTv, setGTv] = useState([]);
+  const [mode,setMode]=useState("light");
 
   useEffect(() => {
-    const fetchAllGenres = async () => {
+    const fetchMovieGenres = async () => {
       try {
-        const resMovieGenres = await tmdb.get("/genre/movie/list");
-        const resTvGenres = await tmdb.get("/genre/tv/list");
-
-        const combinedGenres = [
-          ...resMovieGenres.data.genres,
-          ...resTvGenres.data.genres,
-        ];
-        const uniqueGenres = combinedGenres.filter(
-          (genre, index, self) =>
-            index === self.findIndex((g) => g.id === genre.id)
-        );
-        setAllGenres(uniqueGenres);
+        const resGMovie = await tmdb.get("/genre/movie/list");
+        setGMovie(resGMovie.data.genres)
       } catch (err) {
         console.error("Failed to fetch genres:", err);
       }
     };
 
-    fetchAllGenres();
-  }, []); // سيتم التشغيل مرة واحدة فقط عند تحميل التطبيق
+    fetchMovieGenres();
+  }, []); 
+
+  useEffect(() => {
+    const fetchTVGenres = async () => {
+      try {
+        const resGTv = await tmdb.get("/genre/tv/list");
+        setGTv(resGTv.data.genres)
+      } catch (err) {
+        console.error("Failed to fetch genres:", err);
+      }
+    };
+
+    fetchTVGenres();
+  }, []); 
 
   return (
-    <div className="container">
-      <Navigation />
-      <ViewContent allGenres={allGenres} />
-    </div>
+    <AppContext.Provider value={{GenresMovie:GMovie,GenresTv:GTv,Mode:mode,setMode}}>
+      <div className="container">
+        <Navigation />
+        <ViewContent/>
+      </div>
+    </AppContext.Provider>
   );
 }
 

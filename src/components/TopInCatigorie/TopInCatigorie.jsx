@@ -1,13 +1,15 @@
 // src/components/TopInCatigorie/
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./TopInCatigorie.css";
 import tmdb from "../../api/tmdb";
+import { AppContext } from "../../contextglobal";
 
 export default function TopInCatigorie({ url, sectionTitle, genres }) {
   const carouselRef = useRef(null);
   const [movies, setMovies] = useState([]);
+  const mode=useContext(AppContext).Mode
 
   // Get data from API
   useEffect(() => {
@@ -97,7 +99,7 @@ export default function TopInCatigorie({ url, sectionTitle, genres }) {
   const currentSection = sectionIcons[sectionTitle];
 
   return (
-    <div className="containerCatigorit">
+    <div className={`containerCatigorit ${mode=='light'?'light':'dark'}`}>
       <header className="carouselHeader">
         <h2 className="sectionTitle">
           {currentSection && (
@@ -162,7 +164,7 @@ export default function TopInCatigorie({ url, sectionTitle, genres }) {
               imageUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
               genre={item.genre_ids}
               genres={genres}
-              views={item.vote_count}
+              views={item.popularity}
             />
           );
         })}
