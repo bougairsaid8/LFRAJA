@@ -1,5 +1,5 @@
 .ViewContainer {
-  flex-grow: 1; /* لجعل الحاوية تملأ المساحة المتبقية */
+  width:85%;
   margin: 0px;
   height: 100%;
   position: relative;
@@ -7,7 +7,7 @@
 
   /* For Firefox */
   scrollbar-width: thin;
-  scrollbar-color: #a8a8a8 #f0f0f0;
+  scrollbar-color: #f0f0f0;
 }
 .ViewContainer.dark{
   background: #121212;

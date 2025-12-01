@@ -5,7 +5,7 @@
 
 .containerNav {
     box-sizing: border-box;
-    width: 250px;
+    width: 17%;
     height: 100%;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
@@ -111,11 +111,12 @@
     margin: 0;
 }
 
-.links li {
+.links li a{
     margin-bottom: 5px;
+    text-decoration: none;
 }
 
-.links li, .loginOut {
+.links li a, .loginOut {
     display: flex;
     align-items: center;
     padding: 10px 0;
@@ -124,23 +125,23 @@
     
     transition: background-color 0.2s, color 0.2s;
 }
-.containerNav.light .links li{
+.containerNav.light .links li a{
     color: #555;
 }
-.containerNav.light .links li:hover{
+.containerNav.light .links li a:hover{
     color: #7ed957;
     background-color: #eee;
 }
 
-.containerNav.dark .links li{
+.containerNav.dark .links li a{
     color:#9b9b9b
 }
 
-.containerNav.dark .links li:hover{
+.containerNav.dark .links li a:hover{
     color: #fff;
     background-color: #1f1f1f;
 }
-.containerNav.light .links li.active {
+.containerNav.light .links li a.active {
     background-color: #eee;
     color: #7ed957;
 }

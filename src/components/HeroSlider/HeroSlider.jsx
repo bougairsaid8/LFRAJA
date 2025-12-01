@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./HeroSlider.css";
 import tmdb from "../../api/tmdb";
+import { FaPlay } from "react-icons/fa";
+
 
 function HeroSlider({ genres }) {
   const [heroSliderData, setHeroSliderData] = useState([]);
@@ -25,7 +27,7 @@ function HeroSlider({ genres }) {
   };
 
   useEffect(() => {
-    const sliderInterval = setInterval(goToNextSlide, 5000);
+    const sliderInterval = setInterval(goToNextSlide, 8000);
 
     return () => clearInterval(sliderInterval);
   }, []); 
@@ -50,8 +52,9 @@ function HeroSlider({ genres }) {
           <p className="discreption">{Data?.overview}</p>
           <div className="actions">
             <button>
+              <FaPlay /> 
               Watch
-              </button>
+            </button>
             <svg
               className={ "active"}
               xmlns="http://www.w3.org/2000/svg"
@@ -72,12 +75,12 @@ function HeroSlider({ genres }) {
           </div>
         </div>
         <div className="steps">
-          {heroSliderData.map((item) => {
+          {heroSliderData.map((item, index) => {
             return (
               <svg
                 className={item.id === Data.id ? "active" : ""}
                 key={item.id}
-                onClick={() => manualChange(item.id - 1)}
+                onClick={() => manualChange(index)}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="#000000"

@@ -15,7 +15,7 @@ export default function TopInCatigorie({ url, sectionTitle, genres }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const contentRes = await tmdb.get(url, { params: { page: 1 } });
+        const contentRes = await tmdb.get(url);
         setMovies(contentRes.data.results.slice(0, 10));
       } catch (err) {
         console.error(err);
