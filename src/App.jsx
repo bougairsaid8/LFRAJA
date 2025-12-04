@@ -10,8 +10,15 @@ import DiscoverView from "./components/DiscoverView/DiscoverView.jsx";
 function App() {
   const [GMovie, setGMovie] = useState([]);
   const [GTv, setGTv] = useState([]);
+  const [AllGenners,setAllGenners]=useState()
   const [mode,setMode]=useState("light");
 
+  useEffect(() => {
+    if (GMovie.length > 0 || GTv.length > 0) {
+      setAllGenners([...GMovie, ...GTv]);
+    }
+  }, [GMovie, GTv]);
+  
   useEffect(() => {
     const fetchMovieGenres = async () => {
       try {
@@ -37,7 +44,6 @@ function App() {
 
     fetchTVGenres();
   }, []); 
-console.log(GMovie);
 
   return (
     <AppContext.Provider value={{GenresMovie:GMovie,GenresTv:GTv,Mode:mode,setMode}}>
@@ -50,11 +56,11 @@ console.log(GMovie);
         {/* Routs */}
         <Routes>
           <Route path="/LFRAJA/"  element={<ViewContent/>}/>
-          <Route path="/LFRAJA/Movies"  element={<DiscoverView mode={mode} GMovie={GMovie}/>}/>
-          <Route path="/LFRAJA/TV-Series"  element={<DiscoverView mode={mode}/>}/>
-          <Route path="/LFRAJA/Trending"  element={<DiscoverView mode={mode}/>}/>
-          <Route path="/LFRAJA/Favorites"  element={<DiscoverView mode={mode}/>}/>
-          <Route path="/LFRAJA/Settings"  element={<DiscoverView mode={mode}/>}/>
+          <Route path="/LFRAJA/Movies"  element={<DiscoverView mode={mode} Genners={GMovie} Discover={'movie'}/>}/>
+          <Route path="/LFRAJA/TV-Series"  element={<DiscoverView mode={mode} Genners={GTv} Discover={'tv'}/>}/>
+          <Route path="/LFRAJA/Trending"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
+          <Route path="/LFRAJA/Favorites"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
+          <Route path="/LFRAJA/Settings"  element={<DiscoverView mode={mode} />}/>
         </Routes>
 
         </div>

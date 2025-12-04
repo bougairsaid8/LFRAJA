@@ -15,16 +15,19 @@ export default function ViewContent() {
     <div className={`ViewContainer ${mode=='light'?'light':'dark'}`}>
       <HeroSlider genres={AllGenners} />
       <TopInCatigorie
+        component="/LFRAJA/Movies"
         url="/movie/top_rated"
         sectionTitle={"MOVISE"}
         genres={GMovie}
       />
       <TopInCatigorie
+        component="/LFRAJA/TV-Series"
         url="/tv/top_rated"
         sectionTitle={"TV SERIES"}
         genres={GTv}
       />
       <TopInCatigorie
+        component="/LFRAJA/Trending"
         url="/trending/all/day"
         sectionTitle={"TRENDING"}
         genres={AllGenners}

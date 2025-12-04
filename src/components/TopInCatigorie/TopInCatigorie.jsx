@@ -1,12 +1,13 @@
 // src/components/TopInCatigorie/
 
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import MovieCard from "../MovieCard/MovieCard";
 import "./TopInCatigorie.css";
 import tmdb from "../../api/tmdb";
 import { AppContext } from "../../contextglobal";
 
-export default function TopInCatigorie({ url, sectionTitle, genres }) {
+export default function TopInCatigorie({ component, url, sectionTitle, genres }) {
   const carouselRef = useRef(null);
   const [movies, setMovies] = useState([]);
   const mode=useContext(AppContext).Mode
@@ -170,7 +171,7 @@ export default function TopInCatigorie({ url, sectionTitle, genres }) {
         })}
       </div>
       <div className="viewAll">
-        <a href="/category/top">View All...</a>
+        <Link to={component}>View All...</Link>
       </div>
     </div>
   );

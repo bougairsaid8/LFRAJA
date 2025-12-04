@@ -5,13 +5,14 @@
 /* -------------------------------------- */
 
 .containerSlider {
-    width:100%;
-    height: 350px;
+    width: 100%;
+    height: 400px; 
     position: relative;
     overflow: hidden;
     color: white;
     background-size: cover;
-    background-position: center top center ;
+    background-position:0; 
+    background-repeat: no-repeat;
     transition: background-image 0.5s ease;
     user-select: none;
 }
@@ -26,7 +27,6 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
     z-index: 1;
 }
-
 /* -------------------------------------- */
 /* 2. منطقة معلومات الفيلم (infoSlider)  */
 /* -------------------------------------- */

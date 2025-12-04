@@ -40,7 +40,7 @@ function HeroSlider({ genres }) {
     <>
       <div
         className="containerSlider"
-        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${Data?.backdrop_path || ""})` }}
+        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${Data?.backdrop_path || ""})` }}
       >
         <div className="infoSlider">
           <h2>{Data?.name || Data?.title}</h2>
