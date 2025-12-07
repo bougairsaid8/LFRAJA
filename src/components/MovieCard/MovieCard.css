@@ -9,7 +9,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     scroll-snap-align: start;
-    border: 2px solid transparent; 
+    border: 2px solid #f3f3f3; 
 }
 
 .movieCard:hover {

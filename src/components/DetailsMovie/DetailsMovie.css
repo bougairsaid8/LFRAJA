@@ -1,0 +1,248 @@
+/* Main container for the movie details page */
+.detailsMovie {
+  position: relative;
+  color: #fff;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-image: var(--backdrop-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: 
+      linear-gradient(to bottom, transparent 2%, black 15%, black 85%, transparent 98%);
+  
+  mask-image: 
+      linear-gradient(to bottom, black 85%, transparent 100%);
+
+  /* هذا الأمر يدمج القناعين معاً ليظهر فقط المنطقة المشتركة بينهما */
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Dark overlay for better text readability */
+.detailsMovie::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(119, 119, 119, 0.514);
+  z-index: 0;
+}
+.ViewContainer.dark .detailsMovie::before{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Content wrapper for poster and info */
+.detailsMovie_poster {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  height: 80%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Movie poster */
+.detailsMovie_poster img {
+  width: 250px;
+  height: 375px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+/* Container for all textual information */
+.detailsMovie_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+  gap: 15px;
+  flex: 1;
+}
+
+.detailsMovie_info h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.moreInfo {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.moreInfo li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.detailsMovie_overview {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+}
+
+.detailsMovie_actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.detailsMovie_watch,
+.detailsMovie_add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.detailsMovie_watch {
+  background-color: #7ed957;
+  color: #fff;
+}
+
+.detailsMovie_watch:hover {
+  background-color: #6bc04a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(126, 217, 87, 0.4);
+}
+
+.detailsMovie_add {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.detailsMovie_add:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.Castcrew {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .Castcrew_title {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    color: #555;
+  }
+  .Castcrew.dark .Castcrew_title{
+    color: #fff;
+  }
+  .Castcrew_title svg{
+    height: 35px;
+    width: 35px;
+    margin-left: 5px;
+  }
+  /* شبكة عرض الممثلين */
+  .Castcrew_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 30px;
+  }
+  
+  /* بطاقة كل ممثل */
+  .Castcrew_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .Castcrew_item:hover {
+    transform: translateY(-5px); /* رفع العنصر قليلاً عند التمرير */
+  }
+
+  
+  /* صورة الممثل */
+  .Castcrew_item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%; /* جعل الصورة دائرية */
+    margin-bottom: 15px;
+    border: 3px solid rgba(148, 148, 148, 0.705); /* إطار خفيف */
+    transition: all 0.2s ease-in-out;
+  }
+  .Castcrew_item:hover img{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .Castcrew_item.dark img{
+    border: 3px solid rgba(255, 255, 255, 0.719); /* إطار خفيف */
+  }
+  .Castcrew_item.dark:hover img{
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  
+  /* اسم الممثل */
+  .Castcrew_item h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: #333;
+  }
+  
+  /* اسم الشخصية أو الوظيفة */
+  .Castcrew_item p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+    color: #555;
+  }
+  
+  .Castcrew_item.dark h3{
+    color: #fff;
+  }
+  .Castcrew_item.dark p{
+    color: #cacaca;
+  }
+  /* --- تحسينات للتجاوب مع الشاشات الصغيرة --- */
+  @media (max-width: 768px) {
+    .Castcrew_title {
+      font-size: 1.5rem;
+    }
+    
+    .Castcrew_list {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 20px;
+    }
+  
+    .Castcrew_item img {
+      width: 100px;
+      height: 100px;
+    }
+  }

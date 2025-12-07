@@ -6,7 +6,7 @@ import ViewContent from "./components/View/view";
 import {AppContext} from "./contextglobal.jsx"
 import tmdb from "./api/tmdb";
 import DiscoverView from "./components/DiscoverView/DiscoverView.jsx";
-
+import DetailsMovie from "./components/DetailsMovie/DetailsMovie.jsx";
 function App() {
   const [GMovie, setGMovie] = useState([]);
   const [GTv, setGTv] = useState([]);
@@ -61,6 +61,8 @@ function App() {
           <Route path="/LFRAJA/Trending"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
           <Route path="/LFRAJA/Favorites"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
           <Route path="/LFRAJA/Settings"  element={<DiscoverView mode={mode} />}/>
+
+          <Route path="/LFRAJA/DetailsMovie/:id"  element={<DetailsMovie mode={mode}/>}/>
         </Routes>
 
         </div>

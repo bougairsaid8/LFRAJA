@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./DiscoverView.css";
 import tmdb from "../../api/tmdb";
+import { Link } from "react-router-dom";
 const languages = [
   { code: "en", name: "English" },
   { code: "fr", name: "French" },
@@ -152,22 +153,23 @@ function DiscoverView({ mode, Genners, Discover }) {
       <div className={`content ${mode == "light" ? "light" : "dark"}`}>
       {data.map((item) => {
           return (
-            <MovieCard
-              key={item.id}
-              title={item.title ? item.title : item.name}
-              year={
-                item.release_date
-                  ? item.release_date.slice(0, 4)
-                  : item.first_air_date
-                    ?item.first_air_date.slice(0, 4)
-                    : "N/A"
-              }
-              rating={item.vote_average.toFixed(1)}
-              imageUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
-              genre={item.genre_ids}
-              genres={Genners}
-              views={item.popularity}
-            />
+            <Link to={`/LFRAJA/DetailsMovie/${item.id}`} key={item.id}>
+              <MovieCard
+                title={item.title ? item.title : item.name}
+                year={
+                  item.release_date
+                    ? item.release_date.slice(0, 4)
+                    : item.first_air_date
+                      ?item.first_air_date.slice(0, 4)
+                      : "N/A"
+                }
+                rating={item.vote_average.toFixed(1)}
+                imageUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                genre={item.genre_ids}
+                genres={Genners}
+                views={item.popularity}
+              />
+            </Link>
           );
         })}
       </div>
