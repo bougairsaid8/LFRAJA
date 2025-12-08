@@ -144,7 +144,7 @@
     padding: 40px 20px;
   }
   
-  .Castcrew_title {
+  .title {
     font-size: 2rem;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
@@ -155,10 +155,10 @@
     padding-left: 15px;
     color: #555;
   }
-  .Castcrew.dark .Castcrew_title{
+  .ViewContainer.dark .title{
     color: #fff;
   }
-  .Castcrew_title svg{
+  .title svg{
     height: 35px;
     width: 35px;
     margin-left: 5px;
@@ -229,6 +229,17 @@
   }
   .Castcrew_item.dark p{
     color: #cacaca;
+  }
+  .MoreMovies {
+    max-width: 1200px;
+    margin: 50px auto; /* مسافة من الأعلى والأسفل */
+    padding: 0 20px;
+  }
+  .Movies_list {
+    display: grid;
+    /* إنشاء شبكة متجاوبة تملأ المساحة تلقائياً */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 25px; /* المسافة بين البطاقات */
   }
   /* --- تحسينات للتجاوب مع الشاشات الصغيرة --- */
   @media (max-width: 768px) {

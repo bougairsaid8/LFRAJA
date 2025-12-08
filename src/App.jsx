@@ -62,7 +62,7 @@ function App() {
           <Route path="/LFRAJA/Favorites"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
           <Route path="/LFRAJA/Settings"  element={<DiscoverView mode={mode} />}/>
 
-          <Route path="/LFRAJA/DetailsMovie/:id"  element={<DetailsMovie mode={mode}/>}/>
+          <Route path="/LFRAJA/DetailsMovie/:id"  element={<DetailsMovie mode={mode} type='movie' Genners={GMovie}/>}/>
         </Routes>
 
         </div>
