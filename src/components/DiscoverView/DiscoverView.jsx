@@ -3,6 +3,8 @@ import MovieCard from "../MovieCard/MovieCard";
 import "./DiscoverView.css";
 import tmdb from "../../api/tmdb";
 import { Link } from "react-router-dom";
+import poster from "../../assets/posterVide.png"
+
 const languages = [
   { code: "en", name: "English" },
   { code: "fr", name: "French" },
@@ -52,21 +54,21 @@ function DiscoverView({ mode, Genners, Discover }) {
 
   // Update URL based on search and filter state
   useEffect(() => {
-    if (
-      !search &&
-      !filter.Genre &&
-      !filter.Year &&
-      !filter.Rating &&
-      !filter.language
-    ) {
-      setUrl(`/discover/${Discover}`);
-    } else if (search) {
-      setUrl(`/search/${Discover}?query=${search}`);
-    } else {
-      setUrl(
-        `/discover/${Discover}?with_genres=${filter.Genre}&primary_release_year=${filter.Year}&with_original_language=${filter.language}&vote_average.gte=${filter.Rating}&vote_average.lte=${filter.Rating+1}`
-      );
-    }
+      if (
+        !search &&
+        !filter.Genre &&
+        !filter.Year &&
+        !filter.Rating &&
+        !filter.language
+      ) {
+        setUrl(`/discover/${Discover}`);
+      } else if (search) {
+        setUrl(`/search/${Discover}?query=${search}`);
+      } else {
+        setUrl(
+          `/discover/${Discover}?with_genres=${filter.Genre}&primary_release_year=${filter.Year}&with_original_language=${filter.language}&vote_average.gte=${filter.Rating}&vote_average.lte=${filter.Rating+1}`
+        );
+      }
   }, [search, filter, Discover]);
 
   useEffect(() => {
@@ -153,7 +155,7 @@ function DiscoverView({ mode, Genners, Discover }) {
       <div className={`content ${mode == "light" ? "light" : "dark"}`}>
       {data.map((item) => {
           return (
-            <Link to={`/LFRAJA/DetailsMovie/${item.id}`} key={item.id}>
+            <Link to={`/LFRAJA/Details_${Discover}/${item.id}`} key={item.id}>
               <MovieCard
                 title={item.title ? item.title : item.name}
                 year={
@@ -164,7 +166,7 @@ function DiscoverView({ mode, Genners, Discover }) {
                       : "N/A"
                 }
                 rating={item.vote_average.toFixed(1)}
-                imageUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                imageUrl={item.poster_path?`https://image.tmdb.org/t/p/w342${item.poster_path}`:poster}
                 genre={item.genre_ids}
                 genres={Genners}
                 views={item.popularity}

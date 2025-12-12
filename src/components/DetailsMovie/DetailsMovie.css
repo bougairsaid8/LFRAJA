@@ -11,11 +11,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-mask-image: 
-      linear-gradient(to bottom, transparent 2%, black 15%, black 85%, transparent 98%);
-  
-  mask-image: 
-      linear-gradient(to bottom, black 85%, transparent 100%);
+
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 
   /* هذا الأمر يدمج القناعين معاً ليظهر فقط المنطقة المشتركة بينهما */
   -webkit-mask-composite: source-in;
@@ -33,8 +30,8 @@
   background-color: rgba(119, 119, 119, 0.514);
   z-index: 0;
 }
-.ViewContainer.dark .detailsMovie::before{
-    background-color: rgba(0, 0, 0, 0.7);
+.ViewContainer.dark .detailsMovie::before {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Content wrapper for poster and info */
@@ -139,121 +136,208 @@
 }
 
 .Castcrew {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  color: #555;
+}
+.ViewContainer.dark .title {
+  color: #fff;
+}
+.title svg {
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+}
+/* شبكة عرض الممثلين */
+.Castcrew_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+/* بطاقة كل ممثل */
+.Castcrew_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.Castcrew_item:hover {
+  transform: translateY(-5px); /* رفع العنصر قليلاً عند التمرير */
+}
+
+/* صورة الممثل */
+.Castcrew_item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* جعل الصورة دائرية */
+  margin-bottom: 15px;
+  border: 3px solid rgba(148, 148, 148, 0.705); /* إطار خفيف */
+  transition: all 0.2s ease-in-out;
+}
+.Castcrew_item:hover img {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.Castcrew_item.dark img {
+  border: 3px solid rgba(255, 255, 255, 0.719); /* إطار خفيف */
+}
+.Castcrew_item.dark:hover img {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* اسم الممثل */
+.Castcrew_item h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+/* اسم الشخصية أو الوظيفة */
+.Castcrew_item p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+  color: #555;
+}
+
+.Castcrew_item.dark h3 {
+  color: #fff;
+}
+.Castcrew_item.dark p {
+  color: #cacaca;
+}
+.MoreMovies {
+  max-width: 1200px;
+  margin: 50px auto; /* مسافة من الأعلى والأسفل */
+  padding: 0 20px;
+}
+.Movies_list {
+  display: grid;
+  /* إنشاء شبكة متجاوبة تملأ المساحة تلقائياً */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px; /* المسافة بين البطاقات */
+}
+
+.background-trailer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerTrailer {
+  width: 80%;
+  max-width: 900px;
+  padding: 10px;
+  padding-top: 30px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+
+  z-index: 900;
+
+}
+.containerTrailer.dark {
+  background: rgba(255, 255, 255, 0.25);
+}
+.containerTrailer.light {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+
+.containerTrailer iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Close button */
+.closeTrailer {
+  position: absolute;
+  top: 1px;
+  right: 15px;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* ===== Animations ===== */
+@keyframes trailerIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
   }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 25px;
-    padding-left: 15px;
-    color: #555;
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
-  .ViewContainer.dark .title{
-    color: #fff;
+}
+
+@keyframes trailerOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
   }
-  .title svg{
-    height: 35px;
-    width: 35px;
-    margin-left: 5px;
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
-  /* شبكة عرض الممثلين */
-  .Castcrew_list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 30px;
-  }
-  
-  /* بطاقة كل ممثل */
-  .Castcrew_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .Castcrew_item:hover {
-    transform: translateY(-5px); /* رفع العنصر قليلاً عند التمرير */
+}
+
+/* Apply animation classes */
+.containerTrailer.show {
+  animation: trailerIn 0.3s ease-out forwards;
+}
+
+.containerTrailer.hide {
+  animation: trailerOut 0.25s ease-in forwards;
+}
+
+/* --- تحسينات للتجاوب مع الشاشات الصغيرة --- */
+@media (max-width: 768px) {
+  .Castcrew_title {
+    font-size: 1.5rem;
   }
 
-  
-  /* صورة الممثل */
+  .Castcrew_list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+  }
+
   .Castcrew_item img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%; /* جعل الصورة دائرية */
-    margin-bottom: 15px;
-    border: 3px solid rgba(148, 148, 148, 0.705); /* إطار خفيف */
-    transition: all 0.2s ease-in-out;
+    width: 100px;
+    height: 100px;
   }
-  .Castcrew_item:hover img{
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  .Castcrew_item.dark img{
-    border: 3px solid rgba(255, 255, 255, 0.719); /* إطار خفيف */
-  }
-  .Castcrew_item.dark:hover img{
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  
-  /* اسم الممثل */
-  .Castcrew_item h3 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 0 0 5px 0;
-    color: #333;
-  }
-  
-  /* اسم الشخصية أو الوظيفة */
-  .Castcrew_item p {
-    font-size: 0.9rem;
-    font-weight: 500;
-    font-style: italic;
-    margin: 0;
-    line-height: 1.4;
-    color: #555;
-  }
-  
-  .Castcrew_item.dark h3{
-    color: #fff;
-  }
-  .Castcrew_item.dark p{
-    color: #cacaca;
-  }
-  .MoreMovies {
-    max-width: 1200px;
-    margin: 50px auto; /* مسافة من الأعلى والأسفل */
-    padding: 0 20px;
-  }
-  .Movies_list {
-    display: grid;
-    /* إنشاء شبكة متجاوبة تملأ المساحة تلقائياً */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
-    gap: 25px; /* المسافة بين البطاقات */
-  }
-  /* --- تحسينات للتجاوب مع الشاشات الصغيرة --- */
-  @media (max-width: 768px) {
-    .Castcrew_title {
-      font-size: 1.5rem;
-    }
-    
-    .Castcrew_list {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 20px;
-    }
-  
-    .Castcrew_item img {
-      width: 100px;
-      height: 100px;
-    }
-  }
+}

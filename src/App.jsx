@@ -7,6 +7,7 @@ import {AppContext} from "./contextglobal.jsx"
 import tmdb from "./api/tmdb";
 import DiscoverView from "./components/DiscoverView/DiscoverView.jsx";
 import DetailsMovie from "./components/DetailsMovie/DetailsMovie.jsx";
+import Trending from "./components/Trending/Trending.jsx"
 function App() {
   const [GMovie, setGMovie] = useState([]);
   const [GTv, setGTv] = useState([]);
@@ -58,11 +59,12 @@ function App() {
           <Route path="/LFRAJA/"  element={<ViewContent/>}/>
           <Route path="/LFRAJA/Movies"  element={<DiscoverView mode={mode} Genners={GMovie} Discover={'movie'}/>}/>
           <Route path="/LFRAJA/TV-Series"  element={<DiscoverView mode={mode} Genners={GTv} Discover={'tv'}/>}/>
-          <Route path="/LFRAJA/Trending"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
+          <Route path="/LFRAJA/Trending"  element={<Trending mode={mode} Genners={AllGenners} />}/>
           <Route path="/LFRAJA/Favorites"  element={<DiscoverView mode={mode} Genners={AllGenners}/>}/>
           <Route path="/LFRAJA/Settings"  element={<DiscoverView mode={mode} />}/>
 
-          <Route path="/LFRAJA/DetailsMovie/:id"  element={<DetailsMovie mode={mode} type='movie' Genners={GMovie}/>}/>
+          <Route path="/LFRAJA/Details_movie/:id"  element={<DetailsMovie mode={mode} type='movie' Genners={GMovie}/>}/>
+          <Route path="/LFRAJA/Details_Tv/:id"  element={<DetailsMovie mode={mode} type='tv' Genners={GTv}/>}/>
         </Routes>
 
         </div>

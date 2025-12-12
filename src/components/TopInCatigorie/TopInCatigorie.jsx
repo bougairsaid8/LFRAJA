@@ -6,8 +6,8 @@ import MovieCard from "../MovieCard/MovieCard";
 import "./TopInCatigorie.css";
 import tmdb from "../../api/tmdb";
 import { AppContext } from "../../contextglobal";
-
-export default function TopInCatigorie({ component, url, sectionTitle, genres }) {
+import poster from "../../assets/posterVide.png"
+export default function TopInCatigorie({ component, url, sectionTitle, genres, type }) {
   const carouselRef = useRef(null);
   const [movies, setMovies] = useState([]);
   const mode=useContext(AppContext).Mode
@@ -153,20 +153,21 @@ export default function TopInCatigorie({ component, url, sectionTitle, genres })
       <div className="movieCarousel" ref={carouselRef}>
         {movies.map((item) => {
           return (
-            <MovieCard
-              key={item.id}
-              title={item.title ? item.title : item.name}
-              year={
-                item.release_date
-                  ? item.release_date.slice(0, 4)
-                  : item.first_air_date.slice(0, 4)
-              }
-              rating={item.vote_average.toFixed(1)}
-              imageUrl={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
-              genre={item.genre_ids}
-              genres={genres}
-              views={item.popularity}
-            />
+            <Link to={`/LFRAJA/Details_${type}/${item.id}`} key={item.id}>
+              <MovieCard
+                title={item.title ? item.title : item.name}
+                year={
+                  item.release_date
+                    ? item.release_date.slice(0, 4)
+                    : item.first_air_date.slice(0, 4)
+                }
+                rating={item.vote_average.toFixed(1)}
+                imageUrl={item.poster_path?`https://image.tmdb.org/t/p/w342${item.poster_path}`:poster}
+                genre={item.genre_ids}
+                genres={genres}
+                views={item.popularity}
+              />
+            </Link>
           );
         })}
       </div>

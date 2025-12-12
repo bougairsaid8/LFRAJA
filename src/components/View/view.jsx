@@ -19,12 +19,14 @@ export default function ViewContent() {
         url="/movie/top_rated"
         sectionTitle={"MOVISE"}
         genres={GMovie}
+        type="movie"
       />
       <TopInCatigorie
         component="/LFRAJA/TV-Series"
         url="/tv/top_rated"
         sectionTitle={"TV SERIES"}
         genres={GTv}
+        type="tv"
       />
       <TopInCatigorie
         component="/LFRAJA/Trending"
