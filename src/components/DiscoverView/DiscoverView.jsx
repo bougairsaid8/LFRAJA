@@ -4,7 +4,7 @@ import "./DiscoverView.css";
 import tmdb from "../../api/tmdb";
 import { Link } from "react-router-dom";
 import poster from "../../assets/posterVide.png"
-
+import Pagination from "../Pagination/Pagination";
 const languages = [
   { code: "en", name: "English" },
   { code: "fr", name: "French" },
@@ -17,6 +17,9 @@ const languages = [
 function DiscoverView({ mode, Genners, Discover }) {
   const [url, setUrl] = useState(`/discover/${Discover}`);
   const [search, setSearch] = useState("");
+  
+  const [count, setCount] = useState(1);
+
   function SearchByTitle(e) {
     setSearch(e.target.value);
     setFilter({ ...filter, Genre: "", Year: "", Rating: "", language: "" });
@@ -61,15 +64,19 @@ function DiscoverView({ mode, Genners, Discover }) {
         !filter.Rating &&
         !filter.language
       ) {
-        setUrl(`/discover/${Discover}`);
+        setUrl(`/discover/${Discover}?page=${count}`);
       } else if (search) {
-        setUrl(`/search/${Discover}?query=${search}`);
+        setUrl(`/search/${Discover}?query=${search}&page=${count}`);
       } else {
         setUrl(
-          `/discover/${Discover}?with_genres=${filter.Genre}&primary_release_year=${filter.Year}&with_original_language=${filter.language}&vote_average.gte=${filter.Rating}&vote_average.lte=${filter.Rating+1}`
+          `/discover/${Discover}?with_genres=${filter.Genre}&primary_release_year=${filter.Year}&with_original_language=${filter.language}&vote_average.gte=${filter.Rating}&vote_average.lte=${filter.Rating+1}&page=${count}`
         );
       }
-  }, [search, filter, Discover]);
+  }, [search, filter, Discover, count]);
+  
+  useEffect(() => {
+    setCount(1);
+  }, [Discover, filter, search]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -174,7 +181,9 @@ function DiscoverView({ mode, Genners, Discover }) {
             </Link>
           );
         })}
+        
       </div>
+      <Pagination pages={50} count={count} setCount={setCount} />
     </div>
   );
 }

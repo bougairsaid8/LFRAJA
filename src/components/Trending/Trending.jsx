@@ -4,22 +4,26 @@ import MovieCard from "../MovieCard/MovieCard";
 import tmdb from "../../api/tmdb";
 import { Link } from "react-router-dom";
 import poster from "../../assets/posterVide.png"
+import Pagination from "../Pagination/Pagination";
+
 
 
 
 function Trending({mode , Genners}) {
     const [Data,setData] = useState([])
+    const [count, setCount] = useState(1);
+
     useEffect(() => {
     const fetchData = async () => {
         try {
-        const Res = await tmdb.get("trending/all/day");
+        const Res = await tmdb.get(`trending/all/day?page=${count}`);
         setData(Res.data.results);
         } catch (err) {
         console.error(err);
         }
     };
     fetchData();
-    }, []);
+    }, [count]);
 
   return (
     <div className={`ViewContainer ${mode == "light" ? "light" : "dark"}`}>
@@ -48,6 +52,7 @@ function Trending({mode , Genners}) {
           );
         })}
       </div>
+      <Pagination pages={50} count={count} setCount={setCount} />
     </div>
   )
 }

@@ -4,6 +4,26 @@
   margin: 0;
   text-decoration: none;
 }
+/* 🌞 LIGHT MODE */
+.light {
+  --pg-bg: #ffffff;
+  --pg-btn: #f1f5f9;
+  --pg-text: #555555;
+  --pg-hover:#8ed56f;
+  --pg-active: #7ed957;
+  --pg-disabled: #cbd5e1;
+}
+
+/* 🌙 DARK MODE */
+.dark {
+  --pg-bg: #1f1f1f;
+  --pg-btn: #1f1f1f;
+  --pg-text: #9b9b9b;
+  --pg-hover: #8ed56f;
+  --pg-active: #7ed957;
+  --pg-disabled:hsl(210, 3.40%, 53.70%);
+}
+
 body {
   margin: 0;
   box-sizing: border-box;

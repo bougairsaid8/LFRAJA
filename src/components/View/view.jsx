@@ -16,14 +16,14 @@ export default function ViewContent() {
       <HeroSlider genres={AllGenners} />
       <TopInCatigorie
         component="/LFRAJA/Movies"
-        url="/movie/top_rated"
+        url="/movie/popular"
         sectionTitle={"MOVISE"}
         genres={GMovie}
         type="movie"
       />
       <TopInCatigorie
         component="/LFRAJA/TV-Series"
-        url="/tv/top_rated"
+        url="/tv/popular"
         sectionTitle={"TV SERIES"}
         genres={GTv}
         type="tv"
@@ -33,6 +33,7 @@ export default function ViewContent() {
         url="/trending/all/day"
         sectionTitle={"TRENDING"}
         genres={AllGenners}
+        type={false}
       />
     </div>
   );

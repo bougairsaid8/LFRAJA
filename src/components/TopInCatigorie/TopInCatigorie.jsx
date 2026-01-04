@@ -1,4 +1,3 @@
-// src/components/TopInCatigorie/
 
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ export default function TopInCatigorie({ component, url, sectionTitle, genres, t
   const carouselRef = useRef(null);
   const [movies, setMovies] = useState([]);
   const mode=useContext(AppContext).Mode
-
+  
   // Get data from API
   useEffect(() => {
     const fetchData = async () => {
@@ -24,11 +23,10 @@ export default function TopInCatigorie({ component, url, sectionTitle, genres, t
     };
 
     fetchData();
-  }, [url]); // إعادة الجلب عند تغير الرابط فقط
+  }, [url]); 
 
   const scrollCarousel = (direction) => {
     if (carouselRef.current) {
-      // Estimate scroll amount (Card width + gap)
       const scrollAmount = 215 * direction;
 
       carouselRef.current.scrollBy({
@@ -153,7 +151,7 @@ export default function TopInCatigorie({ component, url, sectionTitle, genres, t
       <div className="movieCarousel" ref={carouselRef}>
         {movies.map((item) => {
           return (
-            <Link to={`/LFRAJA/Details_${type}/${item.id}`} key={item.id}>
+            <Link to={`/LFRAJA/Details_${type?type:item.media_type}/${item.id}`} key={item.id}>
               <MovieCard
                 title={item.title ? item.title : item.name}
                 year={

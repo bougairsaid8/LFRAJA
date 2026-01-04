@@ -11,10 +11,12 @@ export default function MovieCard({
   genres,
 }) {
   const getGenreNames = () => {
-    return genre
-      .slice(0, 2) // نأخذ أول نوعين فقط
+    
+    return genre 
       .map((id) => genres.find((g) => g.id === id)?.name.split(" & ")[0])
-      .filter(Boolean) // نزيل أي قيمة غير موجودة
+      .filter(Boolean) 
+      .filter(item => item.length<10)
+      .slice(0, 2)
       .join(" | ");
   };
 
